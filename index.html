@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Guida al Calcolo del Fattore di Rischio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+
+<div id="notification" class="notification"></div>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <h1>Guida al Calcolo del Fattore di Rischio</h1>
+  <div class="subtitle">Una risorsa completa per comprendere, valutare e gestire il rischio</div>
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="switchTab('tab-home', this)">📄 Documento</button>
+    <button class="tab-btn" onclick="switchTab('tab-sintesi', this)">📋 Sintesi</button>
+    <button class="tab-btn" onclick="switchTab('tab-calc', this)">🧮 Calcolatore Rischi</button>
+  </nav>
+</div>
+
+<main class="container">
+
+  <!-- ======================================================
+       TAB 1 — DOCUMENTO
+  ====================================================== -->
+  <div id="tab-home" class="tab-panel active">
+
+    <p class="home-intro">
+      Nel contesto produttivo contemporaneo, segnato da trasformazioni rapide e da una crescente integrazione
+      tra tecnologie digitali e capitale umano, la valutazione dei rischi non può più essere considerata un
+      semplice adempimento formale. Essa rappresenta invece il cuore di una gestione aziendale consapevole,
+      capace di anticipare l'incertezza e di tutelare il benessere complessivo dei lavoratori.
+    </p>
+    <p class="home-intro">
+      Il documento che segue nasce proprio da questa visione: offrire una guida chiara, rigorosa e accessibile
+      sul calcolo del <strong>fattore di rischio</strong>, illustrando i principi normativi, i modelli matematici
+      e le procedure operative che permettono di valutare in modo oggettivo la magnitudo dei pericoli presenti
+      nei diversi contesti lavorativi.
+    </p>
+    <p class="home-intro">
+      L'obiettivo è accompagnare il lettore in un percorso che parte dalle basi teoriche della prevenzione,
+      attraversa l'evoluzione normativa dal D.Lgs. 626/94 al Testo Unico 81/08, e giunge fino all'applicazione
+      pratica dei modelli P x D, con esempi tratti da scenari reali del settore informatico-sanitario.
+    </p>
+    <p class="home-intro">
+      Per facilitarne la consultazione, la guida è disponibile in formato PDF e può essere scaricata
+      direttamente tramite il pulsante sottostante o attraverso il QR code.
+    </p>
+
+   <a class="download-btn" href="Documento_analisi_rischio.pdf" download aria-label="Scarica il documento PDF da Git Hub">
+      📥 Scarica il documento PDF
+    </a>
+
+    <section class="qr-section">
+      <h2>Accesso rapido tramite QR code</h2>
+      <p style="text-align:center;font-size:.92rem;color:var(--muted)">
+        Inquadra il QR code con il tuo smartphone per scaricare immediatamente la guida.
+      </p>
+      <div id="qrcode"></div>
+    </section>
+
+    <div class="footer">Progetto di Analisi del Rischio — A.A. 2025/2026</div>
+  </div>
+
+
+  <!-- ======================================================
+       TAB 2 — SINTESI
+  ====================================================== -->
+  <div id="tab-sintesi" class="tab-panel">
+
+    <!-- Introduzione -->
+    <div class="card">
+      <span class="chapter-tag">Introduzione</span>
+      <h2>📌 La valutazione del rischio come pilastro strategico</h2>
+      <p>
+        Nel panorama produttivo contemporaneo la valutazione dei rischi ha subito una metamorfosi profonda:
+        da mero adempimento burocratico a <strong>cuore della gestione aziendale</strong>. In un mondo che
+        corre verso l'integrazione tra intelligenza artificiale e capitale umano, la sicurezza deve abbracciare
+        una visione olistica del benessere lavorativo, includendo rischi psicosociali, stress da iperconnessione
+        e sfide ergonomiche del lavoro ibrido.
+      </p>
+      <p>
+        Un'efficace analisi dei rischi permette di anticipare l'incertezza, tutelare l'integrità dei collaboratori
+        e garantire la continuità operativa dell'impresa, minimizzando i costi sommersi derivanti da assenteismo
+        e perdita di talenti.
+      </p>
+    </div>
+
+    <!-- Cap 1 -->
+    <div class="card">
+      <span class="chapter-tag">Capitolo 1</span>
+      <h2>🏛️ Quadro Normativo: dal D.Lgs. 626/94 al D.Lgs. 81/08</h2>
+
+      <h3>1.1 — L'evoluzione storica</h3>
+      <p>
+        La storia della sicurezza in Italia è passata da un approccio <em>tecnico-punitivo</em> (leggi anni '50,
+        incentrate sulla reattività agli infortuni) a un modello <strong>organizzativo-partecipativo</strong>.
+        Il D.Lgs. 626/94 ha segnato la svolta: il Documento di Valutazione dei Rischi (DVR) è diventato
+        obbligatorio, la prevenzione ha lasciato l'officina per entrare nella direzione aziendale.
+      </p>
+      <ul>
+        <li>Istituzione del Servizio di Prevenzione e Protezione (<strong>SPP</strong>)</li>
+        <li>Coinvolgimento dei lavoratori tramite i Rappresentanti (<strong>RLS</strong>)</li>
+        <li>Passaggio dalla protezione reattiva alla <strong>prevenzione soggettiva</strong></li>
+      </ul>
+
+      <h3>1.2 — Il Testo Unico D.Lgs. 81/08</h3>
+      <p>
+        Il T.U. ha razionalizzato l'intero apparato normativo, rendendo il Datore di Lavoro
+        <strong>garante primario</strong> del sistema di prevenzione. Gli obblighi non delegabili (art. 17):
+      </p>
+      <ul>
+        <li>Redazione del DVR — analisi analitica e personalizzata di ogni pericolo</li>
+        <li>Designazione del <strong>RSPP</strong> — consulente strategico nella gestione della sicurezza</li>
+        <li>Nomina del <strong>Medico Competente</strong> in presenza di rischi specifici</li>
+      </ul>
+    </div>
+
+    <!-- Cap 2a: formula -->
+    <div class="card">
+      <span class="chapter-tag">Capitolo 2</span>
+      <h2>📐 La Formula del Rischio: R = P x D</h2>
+      <p>
+        Il processo di valutazione si sintetizza nella <strong>Magnitudo del Rischio (R)</strong>, ottenuta
+        moltiplicando Probabilità e Danno. Il risultato oscilla tra un minimo di 1 e un massimo di 16.
+      </p>
+      <div class="formula-box">
+        <div class="formula">R = P x D</div>
+        <small>Rischio = Probabilità di accadimento x Magnitudo del Danno</small>
+      </div>
+      <p>
+        Questo valore guida la pianificazione strategica: non è una semplice statistica, ma l'indicatore
+        fondamentale su cui il Datore di Lavoro basa la priorità degli interventi di messa in sicurezza.
+      </p>
+    </div>
+
+    <!-- Cap 2b: scale -->
+    <div class="card">
+      <span class="chapter-tag">Capitolo 2</span>
+      <h2>🎚️ Le Scale di Valutazione</h2>
+
+      <h3>Probabilità (P) — scala 1÷4</h3>
+      <div class="scale-grid">
+        <div class="scale-item"><div class="s-dot s-b1">1</div><span><strong>Improbabile</strong> — misure tecniche avanzate, nessun precedente infortunistico</span></div>
+        <div class="scale-item"><div class="s-dot s-b2">2</div><span><strong>Poco Probabile</strong> — situazione sotto controllo, rari precedenti</span></div>
+        <div class="scale-item"><div class="s-dot s-b3">3</div><span><strong>Probabile</strong> — il pericolo è noto, protezioni parziali</span></div>
+        <div class="scale-item"><div class="s-dot s-b4">4</div><span><strong>Altamente Probabile</strong> — pericolo evidente, nessuna protezione, lavoratore non formato</span></div>
+      </div>
+
+      <h3 style="margin-top:1.1rem">Danno (D) — scala 1÷4</h3>
+      <div class="scale-grid">
+        <div class="scale-item"><div class="s-dot s-g1">1</div><span><strong>Lieve</strong> — piccola contusione, scompare in pochi giorni</span></div>
+        <div class="scale-item"><div class="s-dot s-g2">2</div><span><strong>Modesto</strong> — infortunio con assenza dal lavoro (distorsione, punti di sutura)</span></div>
+        <div class="scale-item"><div class="s-dot s-g3">3</div><span><strong>Grave</strong> — lesioni permanenti parziali (perdita di una falange, riduzione udito)</span></div>
+        <div class="scale-item"><div class="s-dot s-g4">4</div><span><strong>Gravissimo</strong> — invalidità totale o decesso (es. esposizione a cancerogeni)</span></div>
+      </div>
+    </div>
+
+    <!-- Cap 2c: matrice -->
+    <div class="card">
+      <span class="chapter-tag">Capitolo 2</span>
+      <h2>📊 La Matrice del Rischio P x D</h2>
+      <p>
+        La Matrice incrocia Probabilità (righe) con Gravità del Danno (colonne). Ogni cella è colorata
+        per fornire una rappresentazione visiva immediata del livello di allerta:
+      </p>
+      <div class="scale-grid" style="margin-top:.6rem">
+        <div class="scale-item"><div class="s-dot" style="background:var(--green)">1-3</div><span><strong>Basso</strong> — rischio accettabile, mantenere le misure esistenti</span></div>
+        <div class="scale-item"><div class="s-dot" style="background:var(--yellow)">4-8</div><span><strong>Medio</strong> — interventi migliorativi nel breve/medio periodo</span></div>
+        <div class="scale-item"><div class="s-dot" style="background:var(--orange)">9-12</div><span><strong>Elevato</strong> — misure correttive urgenti obbligatorie</span></div>
+        <div class="scale-item"><div class="s-dot" style="background:var(--red)">13-16</div><span><strong>Critico</strong> — pericolo immediato, sospensione attività</span></div>
+      </div>
+    </div>
+
+    <!-- Cap 2d: rischio residuo -->
+    <div class="card">
+      <span class="chapter-tag">Capitolo 2</span>
+      <h2>🔄 Dal Rischio Iniziale al Rischio Residuo</h2>
+      <p>
+        Il <strong>Rischio Iniziale</strong> (assoluto) è la magnitudo calcolata analizzando il pericolo
+        nella sua natura grezza, in assenza di difese. Il <strong>Rischio Residuo</strong> è la quota di
+        rischio che permane <em>dopo</em> l'implementazione di tutte le strategie di prevenzione possibili.
+      </p>
+      <p>Il passaggio avviene attraverso la <strong>gerarchia dei controlli</strong>:</p>
+      <ul>
+        <li>🚫 <strong>Eliminazione</strong> del pericolo alla fonte</li>
+        <li>🔄 <strong>Sostituzione</strong> di ciò che è pericoloso con qualcosa di sicuro</li>
+        <li>⚙️ <strong>Misure tecniche collettive</strong> — interblocchi, protezioni fisiche</li>
+        <li>📋 <strong>Misure organizzative</strong> — procedure, turni, formazione</li>
+        <li>🦺 <strong>DPI</strong> (Dispositivi di Protezione Individuale) — ultima barriera</li>
+      </ul>
+      <p style="margin-top:.5rem">
+        Il Rischio Residuo diventa l'oggetto principale della formazione: il lavoratore deve essere
+        consapevole che permane una soglia minima di rischio che richiede il rispetto rigoroso delle procedure.
+      </p>
+    </div>
+
+    <!-- Cap 2e: norme -->
+    <div class="card">
+      <span class="chapter-tag">Capitolo 2</span>
+      <h2>📜 Norme Tecniche di Riferimento</h2>
+      <ul>
+        <li><strong>ISO 31000</strong> — framework strategico per la gestione del rischio: integrazione, approccio dinamico, personalizzazione, fattori umani</li>
+        <li><strong>ISO 45001</strong> — trasforma la sicurezza da obbligo a sistema di gestione certificabile (Leadership, audit, azioni correttive)</li>
+        <li><strong>Linee guida INAIL</strong> — strumenti applicativi nazionali: metodo NIOSH, OCRA, valutazione stress lavoro-correlato (modello bifasico)</li>
+        <li><strong>UNI 11230</strong> — gestione dei near miss e analisi degli incidenti mancati</li>
+      </ul>
+      <p style="margin-top:.6rem">
+        Il DVR diventa il luogo in cui la matrice PxD, la gerarchia dei controlli e il concetto di rischio
+        residuo vengono contestualizzati rispetto alle specificità dell'organizzazione.
+      </p>
+    </div>
+
+    <!-- Cap 3 -->
+    <div class="card">
+      <span class="chapter-tag">Capitolo 3</span>
+      <h2>🏥 Applicazione Pratica: U.O.C. Servizi Informatici</h2>
+      <p>
+        Il caso reale analizzato riguarda una <strong>U.O.C. Servizi Informatici</strong> in ambito sanitario,
+        articolata in cinque aree funzionali con esposizioni differenziate ai fattori di rischio:
+      </p>
+      <ul>
+        <li><strong>Sistemisti Data Center</strong> — rischio elettrico, microclima, rumore, movimentazione carichi</li>
+        <li><strong>Analisti Applicativi</strong> — posture statiche, movimenti ripetitivi, carico mentale, scadenze</li>
+        <li><strong>Tecnici Help Desk</strong> — stress da gestione richieste, rischio ergonomico VDT, carico cognitivo</li>
+        <li><strong>Tecnici Rete e Sicurezza Informatica</strong> — rischio elettrico, lavoro in spazi ristretti, scale portatili</li>
+        <li><strong>Project Manager</strong> — stress da multi-progetto, pressione temporale, lavoro ibrido, responsabilità trasversali</li>
+      </ul>
+      <h3>Esempi di calcolo P x D applicati</h3>
+      <ul>
+        <li>Rischio elettrico (Sistemisti DC): P=3, D=4 → <strong>R=12 Elevato</strong> → residuo R=4 con interblocchi e DPI</li>
+        <li>Rischio ergonomico (Analisti): P=4, D=2 → <strong>R=8 Medio</strong> → residuo R=4 con sedute ergonomiche e pause</li>
+        <li>Stress lavoro-correlato (Help Desk): P=3, D=3 → <strong>R=9 Elevato</strong> → residuo R=6 con misure organizzative</li>
+        <li>Lavoro in quota (Tecnici Rete): P=3, D=3 → <strong>R=9 Elevato</strong> → residuo R=3 con scale certificate e procedure</li>
+        <li>Stress multi-progetto (PM): P=4, D=3 → <strong>R=12 Elevato</strong> → residuo R=6 con pianificazione e supporto</li>
+      </ul>
+      <p style="margin-top:.6rem">
+        La valutazione del rischio non è un esercizio statico, ma un processo dinamico che richiede una
+        costante integrazione tra analisi, prevenzione e mitigazione.
+      </p>
+    </div>
+
+    <div class="footer">Progetto di Analisi del Rischio — A.A. 2025/2026</div>
+  </div>
+
+
+  <!-- ======================================================
+       TAB 3 — CALCOLATORE
+  ====================================================== -->
+  <div id="tab-calc" class="tab-panel">
+
+    <!-- Modulo aggiunta rischio -->
+    <div class="calc-form">
+      <h2>➕ Aggiungi un Nuovo Rischio</h2>
+      <div class="form-grid">
+        <div class="form-group full">
+          <label for="r-nome">Nome del Rischio *</label>
+          <input type="text" id="r-nome" placeholder="es. Rischio elettrico durante manutenzione rack">
+        </div>
+        <div class="form-group full">
+          <label for="r-desc">Descrizione *</label>
+          <textarea id="r-desc" placeholder="Descrivi il pericolo, le attività coinvolte e i soggetti esposti..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="r-prob">Probabilità (P)</label>
+          <select id="r-prob" onchange="updateHint('prob')">
+            <option value="1">1 — Improbabile</option>
+            <option value="2">2 — Poco Probabile</option>
+            <option value="3">3 — Probabile</option>
+            <option value="4">4 — Altamente Probabile</option>
+          </select>
+          <div class="score-hint" id="hint-prob">Misure tecniche avanzate, nessun precedente infortunistico.</div>
+        </div>
+        <div class="form-group">
+          <label for="r-danno">Gravità del Danno (D)</label>
+          <select id="r-danno" onchange="updateHint('danno')">
+            <option value="1">1 — Lieve</option>
+            <option value="2">2 — Modesto</option>
+            <option value="3">3 — Grave</option>
+            <option value="4">4 — Gravissimo</option>
+          </select>
+          <div class="score-hint" id="hint-danno">Piccola contusione o arrossamento, guarigione in pochi giorni.</div>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="addRisk()">➕ Aggiungi Rischio</button>
+    </div>
+
+    <!-- Barra azione -->
+    <div class="action-bar">
+      <h2>📋 Rischi Inseriti <span class="risk-badge" id="risk-count">0 rischi</span></h2>
+    </div>
+
+    <!-- Tabella rischi -->
+    <div class="risk-table-wrap">
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>N°</th>
+              <th>Rischio</th>
+              <th>Descrizione</th>
+              <th style="text-align:center">P</th>
+              <th style="text-align:center">D</th>
+              <th style="text-align:center">R = P x D</th>
+              <th>Livello</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="risk-tbody">
+            <tr><td colspan="8" class="empty-state">Nessun rischio aggiunto. Usa il modulo sopra per iniziare l'analisi.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Matrice rischi -->
+    <div class="matrix-section">
+      <h2>📊 Matrice del Rischio P x D</h2>
+      <div class="matrix-outer">
+
+        <div class="axis-y-wrap">
+          <span class="axis-label">Probabilità (P)</span>
+          <div class="matrix-grid-wrap">
+            <div class="matrix-grid">
+              <!-- P=4 -->
+              <div class="m-row-label">Altamente<br>Probabile (4)</div>
+              <div class="m-cell" id="cell-4-1" style="background:#ffeb3b">4<div class="m-count" id="cnt-4-1"></div></div>
+              <div class="m-cell" id="cell-4-2" style="background:#ffeb3b">8<div class="m-count" id="cnt-4-2"></div></div>
+              <div class="m-cell" id="cell-4-3" style="background:#ff9800">12<div class="m-count" id="cnt-4-3"></div></div>
+              <div class="m-cell" id="cell-4-4" style="background:#f44336">16<div class="m-count" id="cnt-4-4"></div></div>
+              <!-- P=3 -->
+              <div class="m-row-label">Probabile (3)</div>
+              <div class="m-cell" id="cell-3-1" style="background:#4caf50">3<div class="m-count" id="cnt-3-1"></div></div>
+              <div class="m-cell" id="cell-3-2" style="background:#ffeb3b">6<div class="m-count" id="cnt-3-2"></div></div>
+              <div class="m-cell" id="cell-3-3" style="background:#ff9800">9<div class="m-count" id="cnt-3-3"></div></div>
+              <div class="m-cell" id="cell-3-4" style="background:#ff9800">12<div class="m-count" id="cnt-3-4"></div></div>
+              <!-- P=2 -->
+              <div class="m-row-label">Poco<br>Probabile (2)</div>
+              <div class="m-cell" id="cell-2-1" style="background:#4caf50">2<div class="m-count" id="cnt-2-1"></div></div>
+              <div class="m-cell" id="cell-2-2" style="background:#ffeb3b">4<div class="m-count" id="cnt-2-2"></div></div>
+              <div class="m-cell" id="cell-2-3" style="background:#ffeb3b">6<div class="m-count" id="cnt-2-3"></div></div>
+              <div class="m-cell" id="cell-2-4" style="background:#ffeb3b">8<div class="m-count" id="cnt-2-4"></div></div>
+              <!-- P=1 -->
+              <div class="m-row-label">Improbabile (1)</div>
+              <div class="m-cell" id="cell-1-1" style="background:#4caf50">1<div class="m-count" id="cnt-1-1"></div></div>
+              <div class="m-cell" id="cell-1-2" style="background:#4caf50">2<div class="m-count" id="cnt-1-2"></div></div>
+              <div class="m-cell" id="cell-1-3" style="background:#4caf50">3<div class="m-count" id="cnt-1-3"></div></div>
+              <div class="m-cell" id="cell-1-4" style="background:#ffeb3b">4<div class="m-count" id="cnt-1-4"></div></div>
+            </div>
+
+            <div class="matrix-col-labels">
+              <div></div>
+              <div class="m-col-label">Lieve<br>(1)</div>
+              <div class="m-col-label">Modesto<br>(2)</div>
+              <div class="m-col-label">Grave<br>(3)</div>
+              <div class="m-col-label">Gravissimo<br>(4)</div>
+            </div>
+            <div class="matrix-x-title">Gravità del Danno (D)</div>
+          </div>
+        </div>
+
+        <!-- Legenda -->
+        <div class="matrix-legend">
+          <h3>Livelli di rischio</h3>
+          <div class="legend-item"><div class="legend-swatch" style="background:#4CAF50"></div><span><strong>Basso</strong> — R: 1÷3<br><small style="color:var(--muted)">Accettabile, monitorare</small></span></div>
+          <div class="legend-item"><div class="legend-swatch" style="background:#FFEB3B"></div><span><strong>Medio</strong> — R: 4÷8<br><small style="color:var(--muted)">Interventi nel breve periodo</small></span></div>
+          <div class="legend-item"><div class="legend-swatch" style="background:#FF9800"></div><span><strong>Elevato</strong> — R: 9÷12<br><small style="color:var(--muted)">Misure correttive urgenti</small></span></div>
+          <div class="legend-item"><div class="legend-swatch" style="background:#F44336"></div><span><strong>Critico</strong> — R: 13÷16<br><small style="color:var(--muted)">Pericolo immediato</small></span></div>
+          <p style="margin-top:1rem;font-size:.82rem;color:var(--muted)">
+            Il numero nel cerchio indica quanti rischi sono posizionati in quella cella della matrice.
+          </p>
+        </div>
+
+      </div><!-- /matrix-outer -->
+    </div><!-- /matrix-section -->
+
+    <!-- Genera PDF -->
+    <div class="pdf-bar">
+      <p>Genera un report completo in PDF con la tabella dei rischi e la matrice P x D.</p>
+      <button class="btn btn-success" onclick="generatePDF()">📄 Genera Report PDF</button>
+    </div>
+
+    <div class="footer">Progetto di Analisi del Rischio — A.A. 2025/2026</div>
+  </div>
+
+</main><!-- /container -->
+
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+// ──────────────────────────────────────────────
+// DATI
+// ──────────────────────────────────────────────
+let risks = [];
+let idCounter = 0;
+
+const PROB_HINTS = {
+  1: 'Misure tecniche avanzate, nessun precedente infortunistico.',
+  2: 'Situazione sotto controllo, rari precedenti storici.',
+  3: 'Il pericolo è noto, protezioni parziali o lavoratore non formato.',
+  4: 'Pericolo evidente, nessuna protezione, alta frequenza di esposizione.'
+};
+const DANNO_HINTS = {
+  1: 'Piccola contusione o arrossamento, guarigione in pochi giorni.',
+  2: 'Infortunio con assenza dal lavoro (distorsione, punti di sutura).',
+  3: 'Lesioni permanenti parziali (perdita di una falange, riduzione udito).',
+  4: 'Invalidità totale o decesso (es. esposizione a sostanze cancerogene).'
+};
+
+// ──────────────────────────────────────────────
+// HELPERS
+// ──────────────────────────────────────────────
+function getLevel(r) {
+  if (r <= 3)  return { label: 'Basso',   cls: 'chip-basso',   color: '#4CAF50', rgb: [76,175,80]   };
+  if (r <= 8)  return { label: 'Medio',   cls: 'chip-medio',   color: '#FFEB3B', rgb: [255,235,59]  };
+  if (r <= 12) return { label: 'Elevato', cls: 'chip-elevato', color: '#FF9800', rgb: [255,152,0]   };
+  if (r <= 16) return { label: 'Critico', cls: 'chip-critico', color: '#F44336', rgb: [244,67,54]   };
+}
+
+function hexToRgb(hex) {
+  const m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return m ? [parseInt(m[1],16), parseInt(m[2],16), parseInt(m[3],16)] : [0,0,0];
+}
+
+function cellColor(p, d) {
+  const r = p * d;
+  if (r <= 3)  return '#4CAF50';
+  if (r <= 8)  return '#FFEB3B';
+  if (r <= 12) return '#FF9800';
+  if (r <= 16) return '#F44336';
+}
+
+// ──────────────────────────────────────────────
+// HINT DINAMICI
+// ──────────────────────────────────────────────
+function updateHint(field) {
+  if (field === 'prob') {
+    const v = document.getElementById('r-prob').value;
+    document.getElementById('hint-prob').textContent = PROB_HINTS[v];
+  } else {
+    const v = document.getElementById('r-danno').value;
+    document.getElementById('hint-danno').textContent = DANNO_HINTS[v];
+  }
+}
+
+// ──────────────────────────────────────────────
+// AGGIUNGI RISCHIO
+// ──────────────────────────────────────────────
+function addRisk() {
+  const nome = document.getElementById('r-nome').value.trim();
+  const desc = document.getElementById('r-desc').value.trim();
+  const p    = parseInt(document.getElementById('r-prob').value);
+  const d    = parseInt(document.getElementById('r-danno').value);
+
+  if (!nome) { alert('Inserisci il nome del rischio.'); document.getElementById('r-nome').focus(); return; }
+  if (!desc) { alert('Inserisci la descrizione del rischio.'); document.getElementById('r-desc').focus(); return; }
+
+  idCounter++;
+  risks.push({ id: idCounter, nome, desc, p, d, r: p * d });
+
+  document.getElementById('r-nome').value = '';
+  document.getElementById('r-desc').value = '';
+  document.getElementById('r-prob').value  = '1';
+  document.getElementById('r-danno').value = '1';
+  updateHint('prob');
+  updateHint('danno');
+
+  renderTable();
+  renderMatrix();
+  showNotification('Rischio aggiunto correttamente!');
+}
+
+// ──────────────────────────────────────────────
+// RIMUOVI RISCHIO
+// ──────────────────────────────────────────────
+function removeRisk(id) {
+  risks = risks.filter(r => r.id !== id);
+  renderTable();
+  renderMatrix();
+}
+
+// ──────────────────────────────────────────────
+// RENDER TABELLA
+// ──────────────────────────────────────────────
+const PROB_SHORT  = { 1:'Improbabile', 2:'Poco Prob.', 3:'Probabile', 4:'Alt. Prob.' };
+const DANNO_SHORT = { 1:'Lieve', 2:'Modesto', 3:'Grave', 4:'Gravissimo' };
+
+function renderTable() {
+  const tbody = document.getElementById('risk-tbody');
+  const badge = document.getElementById('risk-count');
+  badge.textContent = risks.length + (risks.length === 1 ? ' rischio' : ' rischi');
+
+  if (risks.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8" class="empty-state">Nessun rischio aggiunto. Usa il modulo sopra per iniziare l\'analisi.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = risks.map(risk => {
+    const lv = getLevel(risk.r);
+    return `
+      <tr>
+        <td><strong>${risk.id}</strong></td>
+        <td><strong>${esc(risk.nome)}</strong></td>
+        <td>${esc(risk.desc)}</td>
+        <td style="text-align:center;white-space:nowrap">${risk.p} — ${PROB_SHORT[risk.p]}</td>
+        <td style="text-align:center;white-space:nowrap">${risk.d} — ${DANNO_SHORT[risk.d]}</td>
+        <td style="text-align:center"><strong style="font-size:1.05em;color:${lv.color}">${risk.r}</strong></td>
+        <td><span class="chip ${lv.cls}">${lv.label}</span></td>
+        <td><button class="btn-remove" onclick="removeRisk(${risk.id})">✕ Rimuovi</button></td>
+      </tr>`;
+  }).join('');
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ──────────────────────────────────────────────
+// RENDER MATRICE
+// ──────────────────────────────────────────────
+function renderMatrix() {
+  // Conta rischi per cella
+  const map = {};
+  risks.forEach(r => {
+    const k = `${r.p}_${r.d}`;
+    map[k] = (map[k] || 0) + 1;
+  });
+
+  for (let p = 1; p <= 4; p++) {
+    for (let d = 1; d <= 4; d++) {
+      const cnt = document.getElementById(`cnt-${p}-${d}`);
+      const n   = map[`${p}_${d}`] || 0;
+      if (cnt) {
+        cnt.style.display = n > 0 ? 'flex' : 'none';
+        cnt.textContent   = n;
+      }
+    }
+  }
+}
+
+// ──────────────────────────────────────────────
+// GENERA PDF
+// ──────────────────────────────────────────────
+function generatePDF() {
+  if (risks.length === 0) {
+    alert('Aggiungi almeno un rischio prima di generare il report.');
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+  const today = new Date().toLocaleDateString('it-IT', { day:'2-digit', month:'2-digit', year:'numeric' });
+
+  // ===== Intestazione =====
+  doc.setFillColor(26, 58, 92);
+  doc.rect(0, 0, 210, 38, 'F');
+
+  doc.setTextColor(255, 255, 255);
+  doc.setFontSize(17);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Report di Analisi del Rischio', 20, 14);
+
+  doc.setFontSize(9.5);
+  doc.setFont('helvetica', 'normal');
+  doc.text('Documento di Valutazione dei Rischi (DVR)', 20, 22);
+  doc.text(`Data: ${today}  |  Rischi analizzati: ${risks.length}`, 20, 29);
+
+  doc.setTextColor(0, 0, 0);
+
+  // ===== Titolo sezione tabella =====
+  let y = 47;
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(26, 58, 92);
+  doc.text('1. Tabella dei Rischi Identificati', 20, y);
+  doc.setTextColor(0, 0, 0);
+  y += 6;
+
+  // ===== Tabella =====
+  doc.autoTable({
+  startY: y,
+  head: [['N°', 'Rischio', 'Descrizione', "Probabilita' (P)", 'Danno (D)', 'R = P x D', 'Livello']],
+  body: risks.map(risk => {
+    const lv = getLevel(risk.r);
+    return [
+      risk.id.toString(),
+      risk.nome,
+      risk.desc,
+      `${PROB_SHORT[risk.p]} (${risk.p})`,
+      `${DANNO_SHORT[risk.d]} (${risk.d})`,
+      risk.r.toString(),
+      lv.label
+    ];
+  }),
+
+  // ===== Stili Globali =====
+  styles: {
+    fontSize: 9,
+    cellPadding: 3,
+    valign: 'middle'
+  },
+
+  // ===== Intestazione =====
+  headStyles: {
+    fillColor: [26, 58, 92],
+    textColor: [255, 255, 255],
+    fontStyle: 'bold',
+    fontSize: 9,
+    halign: 'center'
+  },
+
+  // ===== Corpo =====
+  bodyStyles: {
+    fontSize: 8.5,
+    valign: 'middle'
+  },
+
+  // ===== Larghezza Colonne =====
+  columnStyles: {
+    0: { cellWidth: 9,  halign: 'center' },
+    1: { cellWidth: 30 },
+    2: { cellWidth: 52 },
+    3: { cellWidth: 27, halign: 'center' },
+    4: { cellWidth: 22, halign: 'center' },
+    5: { cellWidth: 12, halign: 'center', fontStyle: 'bold' },
+    6: { cellWidth: 18, halign: 'center' }
+  },
+
+  // ===== Colorazione Celle Dinamica =====
+  didParseCell: function(data) {
+    if (data.section === 'body') {
+      const risk = risks[data.row.index];
+      const lv   = getLevel(risk.r);
+
+      // ===== Colore del valore R =====
+      if (data.column.index === 5) {
+        data.cell.styles.textColor = lv.rgb;
+        data.cell.styles.fontStyle = 'bold';
+      }
+
+      // ===== Colore pieno del livello =====
+      if (data.column.index === 6) {
+        data.cell.styles.fillColor = lv.rgb;
+        data.cell.styles.textColor = [255, 255, 255];
+        data.cell.styles.fontStyle = 'bold';
+      }
+    }
+  },
+
+  // ===== Margini =====
+  margin: { left: 20, right: 20 }
+  });
+
+  // ===== Titolo sezione matrice =====
+  let matY = doc.lastAutoTable.finalY + 14;
+
+  // ===== Controllo spazio sufficiente matrice (almeno 90mm) =====
+  if (matY + 90 > 277) {
+    doc.addPage();
+    matY = 20;
+  }
+
+  doc.setFontSize(12);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(26, 58, 92);
+  doc.text('2. Matrice del Rischio P x D', 20, matY);
+  doc.setTextColor(0, 0, 0);
+  matY += 8;
+
+  // ===== Disegna la matrice =====
+  drawMatrix(doc, 20, matY);
+  matY += 72;
+
+  // ===== Legenda matrice =====
+  const legColors = [
+    { c:[76,175,80],  l:'Basso   (R: 1÷3)  — Accettabile, mantenere le misure esistenti' },
+    { c:[255,235,59], l:'Medio   (R: 4÷8)  — Interventi migliorativi nel breve/medio periodo' },
+    { c:[255,152,0],  l:'Elevato (R: 9÷12) — Misure correttive urgenti obbligatorie' },
+    { c:[244,67,54],  l:'Critico (R: 13÷16)— Pericolo immediato, sospendere l\'attività' }
+  ];
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(26, 58, 92);
+  doc.text('Legenda:', 20, matY);
+  matY += 5;
+  legColors.forEach(({ c, l }) => {
+    doc.setFillColor(...c);
+    doc.rect(20, matY - 3.5, 7, 5, 'F');
+    doc.setTextColor(60, 60, 60);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.text(l, 30, matY);
+    matY += 6;
+  });
+
+  // ===== Footer pagina =====
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    const ph = doc.internal.pageSize.height;
+    doc.setFillColor(26, 58, 92);
+    doc.rect(0, ph - 12, 210, 12, 'F');
+    doc.setFontSize(7.5);
+    doc.setTextColor(255, 255, 255);
+    doc.text('Report Analisi del Rischio — A.A. 2025/2026', 20, ph - 4.5);
+    doc.text(`Pagina ${i} di ${totalPages}`, 190, ph - 4.5, { align: 'right' });
+  }
+
+  const fname = `report_rischi_${today.replace(/\//g,'-')}.pdf`;
+  doc.save(fname);
+  showNotification('Report PDF generato e scaricato!');
+}
+
+// ===== Disegna la matrice nel PDF =====
+function drawMatrix(doc, ox, oy) {
+  const CW = 23, CH = 13;
+  const LW = 38;
+
+  const probLabels = ['Alt. Prob. (4)', 'Probabile (3)', 'Poco Prob. (2)', 'Improbabile (1)'];
+  const dannoLabels= ['Lieve (1)', 'Modesto (2)', 'Grave (3)', 'Gravissimo (4)'];
+
+  // ===== Conta rischi cella =====
+  const map = {};
+  risks.forEach(r => {
+    const k = `${r.p}_${r.d}`;
+    map[k] = (map[k] || 0) + 1;
+  });
+
+  // ===== Etichetta asse Y =====
+  doc.setFontSize(7.5);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(100, 100, 100);
+  doc.text("PROBABILITA' ", ox, oy - 2);
+
+  for (let pi = 0; pi < 4; pi++) {
+    const p = 4 - pi;
+    const cy = oy + pi * CH;
+
+    // ===== Etichetta riga =====
+    doc.setFontSize(7);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(80, 80, 80);
+    doc.text(probLabels[pi], ox + LW - 2, cy + CH / 2 + 1, { align: 'right' });
+
+    for (let di = 0; di < 4; di++) {
+      const d  = di + 1;
+      const cx = ox + LW + di * CW;
+      const r  = p * d;
+      const lv = getLevel(r);
+
+      // ===== Cella colorata =====
+      doc.setFillColor(...lv.rgb);
+      doc.setDrawColor(255, 255, 255);
+      doc.setLineWidth(0.6);
+      doc.rect(cx, cy, CW, CH, 'FD');
+
+      // ===== Valore R =====
+      doc.setTextColor(255, 255, 255);
+      doc.setFontSize(10);
+      doc.setFont('helvetica', 'bold');
+      doc.text(r.toString(), cx + CW / 2, cy + CH / 2 + 2, { align: 'center' });
+
+      // ===== Badge conteggio rischi =====
+      const cnt = map[`${p}_${d}`] || 0;
+      if (cnt > 0) {
+        doc.setFillColor(0, 0, 0);
+        doc.circle(cx + CW - 3.5, cy + 3.5, 3, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.setFontSize(6.5);
+        doc.text(cnt.toString(), cx + CW - 3.5, cy + 4.7, { align: 'center' });
+      }
+    }
+  }
+
+  // ===== Label colonne (Danno) =====
+  const labY = oy + 4 * CH + 5;
+  doc.setFontSize(7);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(80, 80, 80);
+  dannoLabels.forEach((lbl, i) => {
+    doc.text(lbl, ox + LW + i * CW + CW / 2, labY, { align: 'center' });
+  });
+
+  doc.setFontSize(7.5);
+  doc.setFont('helvetica', 'bold');
+  doc.setTextColor(100, 100, 100);
+  doc.text("GRAVITA' DEL DANNO ", ox + LW + (4 * CW) / 2, labY + 6, { align: 'center' });
+}
+
+// ──────────────────────────────────────────────
+// NOTIFICA
+// ──────────────────────────────────────────────
+function showNotification(msg) {
+  const el = document.getElementById('notification');
+  el.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+// ──────────────────────────────────────────────
+// QR CODE
+// ──────────────────────────────────────────────
+new QRCode(document.getElementById('qrcode'), {
+  text: 'https://akafano.github.io/Project-work/Documento_analisi_rischio.pdf',
+  width: 170,
+  height: 170
+});
+
+// ──────────────────────────────────────────────
+// GESTIONE SWITCH TAB
+// ──────────────────────────────────────────────
+function switchTab(tabId, btn) {
+  // ===== Nasconde tutti i pannelli =====
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+  // ===== Mostra il pannello selezionato =====
+  document.getElementById(tabId).classList.add('active');
+
+  // ===== Aggiorna lo stato dei pulsanti =====
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // ===== Gestione dello scroll =====
+  if (window.innerWidth < 660) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+</script>
+
+</body>
+</html>
